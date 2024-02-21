@@ -1,26 +1,28 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div class="box has-text-weight-bold">
+    <BoxTask>
         <div class="column is-7">
-                {{ task.description }}
+                {{ task.description || 'Tarefa sem descrição' }}
         </div>
         <div class="column">
            <CronometroForms :tempoEmSegundos="task.duration" />
         </div>
-    </div>
+    </BoxTask>
 </template>
 
 <script lang="ts">
 import { PropType, defineComponent } from 'vue';
 import CronometroForms from './Cronometro.vue'
 import ITask from '@/interfaces/ITask';
+import BoxTask from './Box.vue'
 
 
 
 export default defineComponent({
     name: 'TaskForms',
     components:{
-        CronometroForms
+        CronometroForms,
+        BoxTask
     },
     props:{
         task:{
@@ -31,10 +33,3 @@ export default defineComponent({
 
 })
 </script>
-<style scoped>
-    .box {
-        background: #faf0ca;
-
-    }
-
-</style>
